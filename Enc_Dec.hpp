@@ -18,7 +18,10 @@ class EncryptDecrypt
 
     EncryptDecrypt();
     int create_file(const string file_name);
+    int write_file(const string file_name,const string str_data,const int i_append= 0 ,const int i_new_line=0);
     
+    private:
+    string set_password(string &str_password );
+};
 
-
-}
+#endif //ENCDEC_H
