@@ -4,6 +4,8 @@ using std::cerr;
 using std::string;
 
 const int FILE_ALREADY_EXISTS = -1;
+const int FILE_NOT_EXISTING=-2;
+
 
 int mian()
 {
@@ -23,21 +25,62 @@ int mian()
         switch (i_choice)
         {
             case 1:
-            cout<<"Enter the file name to create a file :\n";
-            cin.ignore();
-            getline(cin,str_filename);
+                cout<<"Enter the file name to create a file :\n";
+                cin.ignore();
+                getline(cin,str_filename);
+                
+                i_ret=encdec.create_file(str_filename);
+
+                if(i_ret==FILE_ALREADY_EXISTS)
+                {
+                    cout<<"ERROR: File already Exits..\n";
+                }
+                else
+                {
+                    cout<<"\n File Successfully Created.\n";
+                }
             
-            i_ret=encdec.create_file(str_filename);
+            break;
 
-            if(i_ret==FILE_ALREADY_EXISTS)
-            {
-                cout<<"ERROR: File already Exits..\n";
-            }
-            else
-            {
-                cout<<"\n File Successfully Created.\n";
-            }
+            case 2:
+                cout<<"\n Enter the name of file in which you want to write the data";
+                cin.ignore();
+                getline(cin,str_filename);
+                if(!encdec.is_exists(str_filename))
+                {
+                    
+                }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            case 6:
+                cout<<"\n Thank you for Using My Application.";
+                b_flag=false;
+            break;
+           
+            default:
+                cout<<"Invalid option Selected\n";
+            break;
         }
 
     }
