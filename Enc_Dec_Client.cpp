@@ -3,6 +3,8 @@
 using std::cerr;
 using std::string;
 
+const int FILE_ALREADY_EXISTS = -1;
+
 int mian()
 {
     bool b_flag=true;
@@ -21,6 +23,21 @@ int mian()
         switch (i_choice)
         {
             case 1:
+            cout<<"Enter the file name to create a file :\n";
+            cin.ignore();
+            getline(cin,str_filename);
+            
+            i_ret=encdec.create_file(str_filename);
+
+            if(i_ret==FILE_ALREADY_EXISTS)
+            {
+                cout<<"ERROR: File already Exits..\n";
+            }
+            else
+            {
+                cout<<"\n File Successfully Created.\n";
+            }
+
         }
 
     }
