@@ -1,48 +1,44 @@
-#include "Enc_Dec.hpp"
-
+#include "Encryption_Decryption.hpp"
 using std::cerr;
 using std::string;
 
-const int FILE_ALREADY_EXISTS = -1;
-const int FILE_NOT_EXISTING=-2;
-
-
-int mian()
+int main(void)
 {
-    bool b_flag=true;
-    int i_choice=0;
-    int i_ret=0;
-    EncryptDecrypt encdec;
-    char ch_choice='\0';
-    string str_filename, str_data,str_password;
+    bool bFlag = true;
+    int iChoice = 0, iRet = 0;
+    EncryptionDecryption encdec;
+    char chChoice = '\0';
+    string strFileName, strData, strPass;
 
-    cout<<"Hello Everyone.."<<endl;   
-    while (b_flag)
+    cout << "\nHello Welcome,";
+
+    while (bFlag)
     {
-        cout<<"select one of the following option:\n";
-        cout<<"\n1.Create New File \n2.Write File\n3.Encrypt File \n4.Decrypt File\n5.Delete File \n6.Exit";
-        cin>>i_choice;
-        switch (i_choice)
-        {
-            case 1:
-                cout<<"Enter the file name to create a file :\n";
-                cin.ignore();
-                getline(cin,str_filename);
-                
-                i_ret=encdec.create_file(str_filename);
+        cout << "\nSelect one of the following options : \n";
+        cout << "\n1. Create File\n2. Write File\n3. Encrypt File\n4. Decrypt File\n5. Delete File\n6. Exit\n>_";
+        cin >> iChoice;
 
-                if(i_ret==FILE_ALREADY_EXISTS)
-                {
-                    cout<<"ERROR: File already Exits..\n";
-                }
-                else
-                {
-                    cout<<"\n File Successfully Created.\n";
-                }
-            
+        switch (iChoice)
+        {
+        case 1:
+
+            cout << "\nEnter a file name to create the file : \n";
+            cin.ignore();
+            getline(cin, strFileName);
+
+            iRet = encdec.create_file(strFileName);
+
+            if (iRet == -1)
+                cerr << "\nERROR : File already exists!\n";
+
+            else
+                cout << "\nFile successfully created.\n";
+
             break;
 
-            c cout << "\nEnter the name of the file you would like to write to : \n";
+        case 2:
+
+            cout << "\nEnter the name of the file you would like to write to : \n";
             cin.ignore();
             getline(cin, strFileName);
 
@@ -176,61 +172,18 @@ int mian()
                 cout << "\nInvalid option selected!\n";
             break;
 
+        case 6:
 
+            cout << "\nThank you for using our application!\n";
+            bFlag = false;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-            case 6:
-                cout<<"\n Thank you for Using My Application.";
-                b_flag=false;
             break;
-           
-            default:
-                cout<<"Invalid option Selected\n";
+
+        default:
+            cout << "\nInvalid option selected!\n";
             break;
         }
-
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+
     return 0;
 }
